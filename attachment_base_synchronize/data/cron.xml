@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
+<odoo>
     <data noupdate="1">
         
         <record model="ir.cron" id="cronjob_run_attachments_metadata">
@@ -15,4 +15,4 @@
         </record>
 
     </data>
-</openerp>
+</odoo>
