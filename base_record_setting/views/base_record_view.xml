@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_record_setting_rule_tree" model="ir.ui.view">
+        <field name="model">record.setting.rule</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="model_ref_id"/>
+                <field name="field_ref_id"/>
+                <field name="field_ref_value"/>
+<!--                 <field name="model_dest_id"/>
+                <field name="field_dest_id"/>
+                <field name="field_dest_value"/> -->
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_record_setting_rule_form_view" model="ir.ui.view">
+        <field name="model">record.setting.rule</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group col="4">
+                        <field name="type" widget="radio"/>
+                        <field name="active"/>
+                    </group>
+                    <group col="4">
+                        <group colspan="2">
+                            <field name="model_ref_id"/>
+                            <field name="field_ref_id" attrs="{'invisible': [('model_ref_id', '=', False)]}"/>
+                            <field name="field_ref_value"/>
+                        </group>
+                        <group colspan="2">
+<!--                             <field name="model_dest_id"/>
+                            <field name="field_dest_id"/>
+                            <field name="field_dest_value"/>
+ -->                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        </group>
+                </group>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="record_setting_rule_action" model="ir.actions.act_window">
+        <field name="name">Record Setting Rules</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">record.setting.rule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem action="record_setting_rule_action"
+              id="menu_record_setting_rule_action"
+              parent="base.menu_automation" sequence="10"/>
+
+</odoo>

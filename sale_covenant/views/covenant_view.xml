@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_sale_covenant_tree" model="ir.ui.view">
+        <field name="model">sale.covenant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_covenant_form_view" model="ir.ui.view">
+        <field name="model">sale.covenant</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        <field name="setting_rule_ids" nolabel="1" colspan="2">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="type"/>
+                                <field name="model_ref_id" invisible="1"/>
+                                <field name="field_ref_id"/>
+                                <field name="field_ref_value"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="4">
+                        <group colspan="2">
+                        </group>
+                        <group colspan="2">
+                        </group>
+                </group>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_covenant_action" model="ir.actions.act_window">
+        <field name="name">Sale Covenants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.covenant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem action="sale_covenant_action"
+              id="menu_sale_covenant_action"
+              parent="sale.menu_sales_config" sequence="10"/>
+
+</odoo>
